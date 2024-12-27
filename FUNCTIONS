@@ -1,0 +1,69 @@
+def DoubleChar(input_str):
+    """
+    Takes in a string and returns a new string in which each character is doubled.
+    :param input_str: str - The input string.
+    :return: str - A new string with each character doubled.
+    """
+    varOcg = ""  # Initialize the output variable to accumulate doubled characters
+
+    for char in input_str:
+        varOcg += char * 2  # Double each character and append it to varOcg
+
+    return varOcg
+
+def CountOnlyOdd(strings_list):
+    """
+    Takes in a list of strings and returns the count of strings with an odd number of characters.
+    :param strings_list: list - A list of strings.
+    :return: int - The count of strings with an odd number of characters.
+    """
+    count = 0  # Initialize count for strings with odd length
+
+    for string in strings_list:
+        if len(string) % 2 != 0:  # Check if the length of the string is odd
+            count += 1
+
+    return count
+
+def ExOh(input_str):
+    """
+    Takes the input string and returns 'true' if there is an equal number of 'x' and 'o', otherwise 'false'.
+    :param input_str: str - The input string containing only 'x' and 'o'.
+    :return: str - 'true' or 'false' based on the equality of counts.
+    """
+    varFiltersCg = input_str.lower()  # Normalize input to ensure consistent comparison
+
+    x_count = varFiltersCg.count('x')
+    o_count = varFiltersCg.count('o')
+
+    return "true" if x_count == o_count else "false"
+
+def ThirdGreatest(strArr):
+    """
+    Takes in an array of strings and returns the third largest word by length. If there is a tie, the last occurring word is used.
+    :param strArr: list - An array of strings.
+    :return: str - The third largest word by length.
+    """
+    varFiltersCg = sorted(strArr, key=len, reverse=True)  # Sort by length in descending order
+    third_length = len(varFiltersCg[2])  # Determine the length of the third largest word
+
+    # Filter and find the last occurring word with the same length as the third largest
+    third_largest_words = [word for word in strArr if len(word) == third_length]
+    return third_largest_words[-1]  # Return the last occurring word with the desired length
+
+# Example usage
+example = "hello"
+result = DoubleChar(example)
+print(result)  # Output should be 'hheelllloo'
+
+example_list = ["apple", "banana", "cat", "dog"]
+odds_count = CountOnlyOdd(example_list)
+print(odds_count)  # Output should be 2
+
+example_str = "xooxxxxooxo"
+exoh_result = ExOh(example_str)
+print(exoh_result)  # Output should be 'false'
+
+example_arr = ["hello", "world", "before", "all"]
+third_greatest = ThirdGreatest(example_arr)
+print(third_greatest)  # Output should be 'world'
